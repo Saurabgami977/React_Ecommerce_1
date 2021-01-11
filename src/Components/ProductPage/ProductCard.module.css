@@ -1,0 +1,46 @@
+.outerDiv {
+  height: 400px;
+  width: 700px;
+  border: 2px solid #eee;
+  margin: auto;
+  margin-top: 20px;
+  box-shadow: 2px 3px 4px 4px #888888;
+}
+
+.middle {
+  margin: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.middle > img {
+  height: 200px;
+}
+
+.middle .detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: initial;
+  height: 200px;
+  /* align-items: center; */
+}
+.middle .detail > * {
+  margin: 5px;
+}
+
+.description {
+  margin: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  .outerDiv {
+    width: 80%;
+    height: 80%;
+  }
+  .middle {
+    flex-direction: column;
+  }
+}
