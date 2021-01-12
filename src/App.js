@@ -9,13 +9,13 @@ import Cart from './Components/Cart/Cart'
 function App() {
   return (
     // basename = "https://saurabgami977.github.io/React_Ecommerce_1"
-    <BrowserRouter basename="https://saurabgami977.github.io/React_Ecommerce_1">
+    <BrowserRouter >
       <div className="App">
-        <Route path="/" component={Navbar} />
+        <Route path={process.env.PUBLIC_URL + '/'} component={Navbar} />
         <Switch>
-          <Route path="/" exact component={Body} />
-          <Route path="/product/:id" exact component={ProductPage} />
-          <Route path="/cart" exact component={Cart} />
+          <Route path={process.env.PUBLIC_URL + '/'} exact component={Body} />
+          <Route path={process.env.PUBLIC_URL + "/product/:id"} exact component={ProductPage} />
+          <Route path={process.env.PUBLIC_URL + '/cart'} exact component={Cart} />
         </Switch>
       </div>
     </BrowserRouter>
