@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import axios from '../../axios';
 import Loader from '../../UI/Loader/Loader';
 import ProductCard from './ProductCard';
+import { FETCH_PRODUCTS } from '../../Store/Actions/productActions'
 
 function ProductPage(props) {
     const [Product, setProduct] = useState()
@@ -12,16 +13,20 @@ function ProductPage(props) {
 
 
     useEffect(() => {
-        // // let productId = ;
-        // axios.get(`/${props.match.params.id}`)
-        //     .then(response => {
-        //         setProduct(response.data)
-        //         setloading(false)
-        //     })
-        setProduct(props.allProducts.find(product => {
-            return props.match.params.id == product.id
-        }))
-        setloading(false)
+        // let productId = ;
+        if (props.allProducts.length < 1) {
+            axios.get(`/${props.match.params.id}`)
+                .then(response => {
+                    props.fetchAllProducts([response.data])
+                    setProduct(response.data)
+                    setloading(false)
+                })
+        } else {
+            setProduct(props.allProducts.find(product => {
+                return props.match.params.id == product.id
+            }))
+            setloading(false)
+        }
     }, [])
 
 
@@ -32,10 +37,9 @@ function ProductPage(props) {
                     <ProductCard
                         clicked={() => props.history.goBack()}
                         {...Product}
-                        key={Product.id}
+                    // key={Product.id}
                     />
             }
-            {console.log(Product)}
         </>
     )
 }
@@ -46,5 +50,14 @@ const mapStateToProps = state => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchAllProducts: (data) => dispatch({
+            type: FETCH_PRODUCTS,
+            payload: data
+        })
+    }
+}
 
-export default connect(mapStateToProps, null)(ProductPage);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

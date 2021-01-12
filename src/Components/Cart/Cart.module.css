@@ -7,4 +7,55 @@
   align-items: flex-start;
 }
 
+.each {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  box-shadow: 3px 4px 4px 2px #ccc;
+}
 
+.left > img {
+  height: 200px;
+}
+
+.right {
+  width: 60%;
+}
+
+.right > p {
+  color: red;
+}
+
+@media only screen and (max-width: 800px) {
+  .outerDiv {
+    width: 90%;
+  }
+
+  .each {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .right > * {
+    margin: 10px;
+  }
+
+  .left > img {
+    height: 100px;
+  }
+
+  .right h1 {
+    font-size: 20px;
+  }
+}

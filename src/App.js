@@ -8,7 +8,8 @@ import Cart from './Components/Cart/Cart'
 
 function App() {
   return (
-    <BrowserRouter basename="https://saurabgami977.github.io/React_Ecommerce_1">
+    // basename = "https://saurabgami977.github.io/React_Ecommerce_1"
+    <BrowserRouter >
       <div className="App">
         <Route path="/" component={Navbar} />
         <Switch>

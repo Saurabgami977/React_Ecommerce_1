@@ -4,7 +4,14 @@ import React from 'react'
 function MuiButton(props) {
     return (
         <div>
-            <Button onClick={props.clicked} variant={props.variant} color={props.color} size={props.size}>{props.children}</Button>
+            <Button
+                style={{ margin: '0', padding: '0' }}
+                onClick={props.clicked}
+                variant={props.variant}
+                color={props.color}
+                size={props.size}>
+                {props.children}
+            </Button>
         </div>
     )
 }
