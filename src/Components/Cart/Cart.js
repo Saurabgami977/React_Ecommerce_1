@@ -10,8 +10,12 @@ function Cart(props) {
     return (
         <div className={classes.outerDiv}>
             <Goback clicked={() => props.history.push('/')} />
-            <h1>My Cart</h1>
-            <p>{products}</p>
+            <h1 style={{ marginTop: '30px' }}>My Cart</h1>
+            {
+                products.length > 1 ? <p>{products}</p> : <h2 style={{ marginTop: '40px' }}> Your Shopping Cart is empty</h2>
+
+            }
+
         </div>
     )
 }
