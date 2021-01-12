@@ -5,13 +5,10 @@ import classes from './ProductCard.module.css';
 import Goback from '../Backoption/Goback';
 import MuiButton from '../../UI/Button/Button';
 import * as cartActions from '../../Store/Actions/cartAction';
-import SpringModal from '../../UI/Modal/Modal'
 
 function ProductCard(props) {
-    const [showModal, setShowModal] = useState(false)
     return (
         <div className={classes.outerDiv}>
-            {showModal && <SpringModal />}
             <div>
                 <Goback clicked={props.clicked} />
             </div>
@@ -20,7 +17,14 @@ function ProductCard(props) {
                 <div className={classes.detail}>
                     <h2>{props.title}</h2>
                     <p style={{ color: 'red' }}>{props.price} $</p>
-                    <MuiButton clicked={() => { props.onAdd(props.id); setShowModal(true) }} variant='contained' color='primary' size='small'><SpringModal action='Item Added!' title={props.title} text={'Add to cart'} /></MuiButton>
+                    <MuiButton
+                        clicked={() => props.onAdd(props.id)}
+                        variant='contained'
+                        color='primary'
+                        size='small'
+                    >
+                        Add to cart
+                    </MuiButton>
                 </div>
             </div>
             <div className={classes.description}>

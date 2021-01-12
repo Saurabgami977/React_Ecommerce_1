@@ -5,7 +5,6 @@ function MuiButton(props) {
     return (
         <div>
             <Button
-                style={{ margin: '0', padding: '0' }}
                 onClick={props.clicked}
                 variant={props.variant}
                 color={props.color}
