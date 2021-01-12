@@ -2,7 +2,7 @@
   "name": "ecommerce-portfolio",
   "version": "0.1.0",
   "private": true,
-  "username": "https://saurabgami977.github.io/React_Ecommerce_1/",
+  "username": "http://saurabgami977.github.io/React_Ecommerce_1/",
   "dependencies": {
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.8",
