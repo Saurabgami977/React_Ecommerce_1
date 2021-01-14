@@ -1,15 +1,19 @@
-import { FETCH_PRODUCTS } from '../Actions/productActions'
+import * as actionTypes from '../Actions/actionTypes';
+import { updateObject } from '../utility';
+
 
 const initialState = {
-    allProducts: [],
+    allProducts: null,
+    loading: true,
+    error: false
 }
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case FETCH_PRODUCTS:
-            return {
-                allProducts: action.payload
-            }
+        case actionTypes.FETCH_PRODUCTS:
+            return updateObject(state, { allProducts: action.payload })
+        case actionTypes.FETCH_PRODUCTS_FAILED:
+            return updateObject(state, { error: true })
         default:
             return state
     }

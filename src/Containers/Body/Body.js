@@ -4,24 +4,16 @@ import axios from '../../axios';
 import { connect } from 'react-redux'
 
 
-import Item from '../Item/Item';
+import Item from '../../Components/Item/Item';
 import Loader from '../../UI/Loader/Loader'
 import { Grid } from '@material-ui/core';
-import { FETCH_PRODUCTS } from '../../Store/Actions/productActions'
+import { FETCH_PRODUCTS } from '../../Store/Actions/productActions';
+import * as productFetchingAction from '../../Store/Actions/index';
+
 
 function Body(props) {
-
-    // const [currentItems, setCurrentItems] = useState([]);
-    const [loading, setLoading] = useState(true)
-
     useEffect(() => {
-        axios.get()
-            .then(res => {
-                // setCurrentItems(res.data);
-                setLoading(false);
-                props.fetchAllProducts(res.data)
-            })
-            .catch(err => console.log(err));
+        props.fetchAllProducts()
     }, []);
 
     return (
@@ -29,10 +21,10 @@ function Body(props) {
             marginTop: '20px'
         }}>
             {
-                loading ?
+                !props.allProducts ?
                     <Loader /> :
                     <Grid container >
-                        <Grid item container justify="center" spacing={2} xs={12}>
+                        <Grid container justify="center" spacing={2} xs={12}>
                             {props.allProducts.map(item => {
                                 return (
                                     <Grid key={item.id} item>
@@ -57,10 +49,7 @@ const mapStatetoProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchAllProducts: (data) => dispatch({
-            type: FETCH_PRODUCTS,
-            payload: data
-        })
+        fetchAllProducts: () => dispatch(productFetchingAction.fetchProducts())
     }
 }
 

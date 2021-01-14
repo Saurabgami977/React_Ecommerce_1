@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import './App.css';
-import Body from "./Components/Body/Body";
+import Body from "./Containers/Body/Body";
 import Navbar from "./Components/Nav/Navbar";
-import ProductPage from "./Components/ProductPage/ProductPage";
-import Cart from './Components/Cart/Cart'
+import ProductPage from "./Containers/ProductPage/ProductPage";
+import Cart from './Containers/Cart/Cart'
 
 function App() {
   return (

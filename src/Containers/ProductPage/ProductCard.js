@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux'
 
 import classes from './ProductCard.module.css';
-import Goback from '../Backoption/Goback';
+import Goback from '../../Components/Backoption/Goback';
 import MuiButton from '../../UI/Button/Button';
 import * as cartActions from '../../Store/Actions/cartAction';
 

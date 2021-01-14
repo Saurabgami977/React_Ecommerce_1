@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import Goback from '../Backoption/Goback';
+import Goback from '../../Components/Backoption/Goback';
 import classes from './Cart.module.css';
 
 function Cart(props) {
