@@ -5,6 +5,7 @@ import classes from './ProductCard.module.css';
 import Goback from '../../Components/Backoption/Goback';
 import MuiButton from '../../UI/Button/Button';
 import * as cartActions from '../../Store/Actions/cartAction';
+import { Typography } from '@material-ui/core';
 
 function ProductCard(props) {
     return (
@@ -28,8 +29,8 @@ function ProductCard(props) {
                 </div>
             </div>
             <div className={classes.description}>
-                <h2>Description:</h2>
-                {props.description}
+                <Typography variant="h6">Description:</Typography>
+                <Typography paragraph={true}>{props.description}</Typography>
             </div>
         </div >
     )

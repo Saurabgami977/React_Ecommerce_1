@@ -9,8 +9,8 @@ import Button from '../../UI/Button/Button';
 
 const useStyles = makeStyles({
     root: {
-        minWidth: 400,
-        minHeight: 450,
+        width: 300,
+        minHeight: 400,
     },
     media: {
         height: 240,
@@ -36,7 +36,7 @@ export default function MediaCard(props) {
                     title={props.title}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="subtitle1" component="h2">
                         {props.title}
                     </Typography>
                     <div className={classes.footer}>

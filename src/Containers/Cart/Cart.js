@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 
@@ -36,13 +37,15 @@ function Cart(props) {
 
     let price = totalPrice.reduce((acc, curr) => { return acc + curr }, 0)
 
-    let cart = products.length > 0 ? items : <h2 style={{ marginTop: '40px' }}> Your Shopping Cart is empty</h2>
+    let cart = products.length > 0 ? items : <Typography variant="subtitle1" style={{ marginTop: '40px' }}> Your Shopping Cart is empty</Typography>
     return (
         <div className={classes.outerDiv}>
             <Goback clicked={() => props.history.push('/')} />
-            <h1 style={{ marginTop: '30px' }}>My Cart</h1>
+            <div style={{ marginTop: '30px', display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Typography variant="h4">My Cart</Typography>
+                <Typography variant="h4">Cart Total : <span>{price}</span> $</Typography>
+            </div>
             {cart}
-            <h1>Cart Total : <span>{price}</span> $</h1>
         </div >
     )
 }
