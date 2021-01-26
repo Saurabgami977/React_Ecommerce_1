@@ -5,16 +5,23 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import Button from '../../UI/Button/Button';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 305,
-        minHeight: 400,
+        minWidth: 400,
+        minHeight: 450,
     },
     media: {
         height: 240,
         transform: 'scale(0.7)'
     },
+    footer: {
+        display: 'flex',
+        width: '100%',
+        justifyContent: 'space-between',
+        zIndex: 4
+    }
 });
 
 export default function MediaCard(props) {
@@ -32,9 +39,14 @@ export default function MediaCard(props) {
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.title}
                     </Typography>
-                    <Typography color='secondary'>
-                        {props.price} $
-                    </Typography>
+                    <div className={classes.footer}>
+                        <Typography color='secondary'>
+                            {props.price} $
+                        </Typography>
+                        <Typography color='secondary'>
+                            <Button onClick={() => console.log('hell')}>Add to Cart</Button>
+                        </Typography>
+                    </div>
                 </CardContent>
             </CardActionArea>
         </Card>
