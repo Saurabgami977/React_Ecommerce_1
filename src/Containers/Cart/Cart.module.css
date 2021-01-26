@@ -8,6 +8,7 @@
 }
 
 .each {
+  padding: 10px 20px;
   margin: 20px;
   display: flex;
   flex-direction: row;
@@ -22,10 +23,6 @@
 
 .right {
   width: 60%;
-}
-
-.right > p {
-  color: red;
 }
 
 @media only screen and (max-width: 800px) {

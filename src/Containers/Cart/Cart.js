@@ -27,9 +27,8 @@ function Cart(props) {
                     <img src={item.image} alt={item.title} />
                 </div>
                 <div className={classes.right}>
-                    <h1>{item.title}</h1>
-                    <p>{item.price} $</p>
-                    <h4 className={classes.description}>{item.description}</h4>
+                    <Typography variant="h6">{item.title} - {item.price} $</Typography>
+                    <Typography paragraph className={classes.description}>{item.description}</Typography>
                 </div>
             </div>
         )
