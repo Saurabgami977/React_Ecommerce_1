@@ -4,7 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SearchAppBar = (props) => {
   const classes = useStyles();
-
+  const numberOfCartItems = useSelector(state => state.cart.products)
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -77,7 +77,7 @@ const SearchAppBar = (props) => {
               onClick={() => props.history.push('/cart')}
               style={{ marginRight: '4px' }}
             >
-              {props.cart.length} Item
+              {numberOfCartItems.length} Item
             </p>
             <ShoppingCartIcon />
           </div>
@@ -87,10 +87,4 @@ const SearchAppBar = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    cart: state.cart.products,
-  };
-};
-
-export default connect(mapStateToProps, null)(SearchAppBar);
+export default SearchAppBar;

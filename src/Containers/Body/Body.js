@@ -1,15 +1,18 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Item from '../../Components/Item/Item';
 import Loader from '../../UI/Loader/Loader';
 import { Grid } from '@material-ui/core';
 import * as productFetchingAction from '../../Store/Actions/index';
 
 function Body(props) {
+  const allProducts = useSelector(state => state.products.allProducts)
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    props.fetchAllProducts();
-  }, [props]);
+    dispatch(productFetchingAction.fetchProducts())
+  }, [dispatch]);
 
   return (
     <div
@@ -17,38 +20,26 @@ function Body(props) {
         marginTop: '20px',
       }}
     >
-      {!props.allProducts ? (
+      {!allProducts ? (
         <Loader />
       ) : (
-        <Grid container>
-          <Grid container justify="center" spacing={2} xs={12}>
-            {props.allProducts.map((item) => {
-              return (
-                <Grid key={item.id} item>
-                  <Item
-                    {...item}
-                    clicked={() => props.history.push(`/product/${item.id}`)}
-                  />
-                </Grid>
-              );
-            })}
+          <Grid container>
+            <Grid item container justify="center" spacing={2} xs={12}>
+              {allProducts.map((item) => {
+                return (
+                  <Grid key={item.id} item>
+                    <Item
+                      {...item}
+                      clicked={() => props.history.push(`/product/${item.id}`)}
+                    />
+                  </Grid>
+                );
+              })}
+            </Grid>
           </Grid>
-        </Grid>
-      )}
+        )}
     </div>
   );
 }
 
-const mapStatetoProps = (state) => {
-  return {
-    allProducts: state.products.allProducts,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchAllProducts: () => dispatch(productFetchingAction.fetchProducts()),
-  };
-};
-
-export default connect(mapStatetoProps, mapDispatchToProps)(Body);
+export default Body;

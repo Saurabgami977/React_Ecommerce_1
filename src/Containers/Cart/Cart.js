@@ -1,26 +1,28 @@
 import { Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Goback from '../../Components/Backoption/Goback';
 import classes from './Cart.module.css';
 
 function Cart(props) {
-  const products = [...props.cart];
+  const cartIte = useSelector(state => state.cart.products)
+  const allProducts = useSelector(state => state.products.allProducts)
+  const products = [...cartIte];
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState([]);
   let po = [];
 
   useEffect(() => {
     for (let i = 0; i < products.length; i++) {
-      po.push(props.allProducts.find((product) => product.id === products[i]));
-      setTotalPrice(
-        ...totalPrice,
-        po.map((product) => Number(product.price))
-      );
+      po.push(allProducts.find((product) => product.id === products[i]));
+      // setTotalPrice(
+      //   ...totalPrice,
+      //   po.map((product) => Number(product.price))
+      // );
     }
     setCartItems([...po]);
-  }, [props.allProducts, totalPrice]);
+  }, [allProducts, totalPrice]);
 
   let items = cartItems.map((item, index) => {
     return (
@@ -48,11 +50,11 @@ function Cart(props) {
     products.length > 0 ? (
       items
     ) : (
-      <Typography variant="subtitle1" style={{ marginTop: '40px' }}>
-        {' '}
+        <Typography variant="subtitle1" style={{ marginTop: '40px' }}>
+          {' '}
         Your Shopping Cart is empty
-      </Typography>
-    );
+        </Typography>
+      );
   return (
     <div className={classes.outerDiv}>
       <Goback clicked={() => props.history.push('/')} />
@@ -75,11 +77,4 @@ function Cart(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    cart: state.cart.products,
-    allProducts: state.products.allProducts,
-  };
-};
-
-export default connect(mapStateToProps, null)(Cart);
+export default Cart;
