@@ -9,7 +9,7 @@ import * as productFetchingAction from '../../Store/Actions/index';
 function Body(props) {
   const allProducts = useSelector(state => state.products.allProducts)
   const dispatch = useDispatch();
-
+ 
   useEffect(() => {
     dispatch(productFetchingAction.fetchProducts())
   }, [dispatch]);
